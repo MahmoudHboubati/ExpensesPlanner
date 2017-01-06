@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="add()" #planForm="ngForm">
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Description</ion-label>
+      <ion-input formControlName="description" type="text" [(ngModel)]="description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Amount</ion-label>
+      <ion-input formControlName="amount" type="number" [(ngModel)]="amount"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Start Time</ion-label>
+      <ion-datetime formControlName="startDate" displayFormat="DDD MMM YYYY" pickerFormat="DDD MMM YYYY" [(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <button type="submit" [disabled]="!planForm.form.valid" block>Add Todo</button>
+</form>

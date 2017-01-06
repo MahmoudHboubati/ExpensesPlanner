@@ -1,0 +1,24 @@
+<ion-header>
+  <main-header-navbar headerPageTitle="{{headerPageTitle}}" menuToggle="true"></main-header-navbar>
+</ion-header>
+
+<ion-content class="dashboard" padding>
+
+<ion-row class="row">
+  <ion-col class="col">
+    <!-- <canvas chart [chartObservable]="doughnutChartObs" [optionsObservable]="cOptions"></canvas> -->
+  </ion-col>
+</ion-row>
+
+<ion-list>
+  <ion-item *ngFor="let plaExp of plannedExpenses | async; let i = index">
+    Description: {{plaExp.description}} <br /> Amound: {{plaExp.amount}} <br /> Start: {{plaExp.startDate | date}} <br />
+  </ion-item>
+</ion-list>
+
+<button  ion-button icon-right block (click)="changeChart()">
+  Change
+  <ion-icon name="home" ios="ios-arrow-dropright" md="md-arrow-dropright"></ion-icon>
+</button>
+
+</ion-content>

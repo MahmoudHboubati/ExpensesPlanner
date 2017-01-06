@@ -1,0 +1,25 @@
+<!--
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{headerPageTitle}}
+    </ion-title>
+  </ion-navbar> -->
+
+<ion-navbar>
+  <ion-buttons left>
+    <button menuToggle icon-only ion-button *ngIf="menuToggle">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons>
+  <ion-title>
+    {{headerPageTitle}}
+  </ion-title>
+  <ion-buttons right>
+    <button icon-only *ngIf="addPageClick" ion-button (click)="goToAddPage()">
+        <ion-icon  name="add-circle"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
