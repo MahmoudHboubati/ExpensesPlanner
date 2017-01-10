@@ -13,7 +13,7 @@
 <ion-content class="dashboard" padding>
   <ion-row class="row">
     <ion-col class="col">
-      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
+      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" [legend]="lineChartLegend" [colors]="chartColors">
     </canvas>
     </ion-col>
   </ion-row>
@@ -28,10 +28,6 @@
           <ion-item>
             <ion-label stacked>Expenses</ion-label>
             <ion-input formControlName="expenses" type="number" [(ngModel)]="expenses"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label stacked>Initial</ion-label>
-            <ion-input formControlName="initial" type="number" [(ngModel)]="initial"></ion-input>
           </ion-item>
           <button type="submit" ion-button icon-right block [disabled]="!planForm.form.valid">
               Next

@@ -1,4 +1,4 @@
-import { AngularFire, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
+import {AngularFire, AuthProviders, AuthMethods, FirebaseAuthState, FirebaseAuth} from 'angularfire2';
 import {Component, OnInit, Inject} from '@angular/core';
 import { NavController, ViewController, NavParams} from 'ionic-angular';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -11,8 +11,7 @@ import {TabsPage} from '../tabs/tabs';
 })
 export class LoginPage {
 
-  error: any
-  af: any
+  error: any;
   loginForm: FormGroup;
 
   userInfo: any;
@@ -21,11 +20,9 @@ export class LoginPage {
     builder: FormBuilder,
     public _params: NavParams,
     private _authService: AuthService,
-    private _navCtrl: NavController) {
-
-    // // HAD TO HACK IN THE AngularFire object... :-(
-    // this.af = _params.get("af");
-    // console.log('login page');
+    private _navCtrl: NavController,
+    private fbAuth: FirebaseAuth,
+  private af: AngularFire) {
 
     this.loginForm = builder.group({
       'email': [
@@ -88,12 +85,16 @@ export class LoginPage {
     var userEmail = credentials.email;
     var password = credentials.password;
 
-    var promis = this._authService.login(userEmail, password);
+    // var promis = this._authService.login(userEmail, password);
+    //
+    // promis.then((a: firebase.User) => {
+    //   this.loggedInSucceeded(a);
+    // }).catch((e: Error) => {
+    //   this.loginFailed(e);
+    // });
 
-    promis.then((a: firebase.User) => {
-      this.loggedInSucceeded(a);
-    }).catch((e: Error) => {
-      this.loginFailed(e);
+    this.af.auth.login({email: userEmail, password: password}).catch((e)=>{
+      console.log(e)
     });
   }
 

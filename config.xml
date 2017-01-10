@@ -4,7 +4,10 @@
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
+    <!-- Don't block any requests -->
     <access origin="*" />
+    <!-- or -->
+    <access origin="https://*.googleapis.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

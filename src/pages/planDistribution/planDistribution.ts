@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ModalController, NavController} from 'ionic-angular';
 import {FirebaseListObservable} from 'angularfire2';
 import {MainHeaderNavbarComponent} from '../../app/components/headerNavbar/mainHeaderNavbar.component';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {UserSettingsService} from '../../app/core/services/userSettings.service';
 import {PlannedExpensesService} from '../../app/core/services/plannedExpenses.service';
 import {IPlannedExpenses} from '../../app/core/domain/plannedExpenses.entity';
@@ -11,7 +11,7 @@ import {GeneralPage} from '../base/base.page';
 import {AuthService} from '../../app/core/services/auth.service';
 
 import {ChartDirective} from '../../app/components/charts/ChartJS.directive';
-import {IChartData, ChartData, DoughnutChart, ChartDataSet, IChartPoint} from '../../app/components/charts/chartjs.data';
+import {ChartData, DoughnutChart, ChartDataSet} from '../../app/components/charts/chartjs.data';
 import {ChartOptions, ChartOptionsScales, ChartAxe} from '../../app/components/charts/chartjs.options';
 import {Observable} from 'rxjs';
 

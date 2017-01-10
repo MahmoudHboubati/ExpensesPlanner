@@ -10,7 +10,7 @@ import {MainHeaderNavbarComponent} from './components/headerNavbar/mainHeaderNav
 import {ChartDirective} from './components/charts/ChartJS.directive';
 import {AuthService} from './core/services/auth.service';
 
-import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
+import {AngularFireModule, AuthProviders, AuthMethods, FIREBASE_PROVIDERS} from 'angularfire2';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 // Must export the config
 export const firebaseConfig = {
@@ -22,7 +22,7 @@ export const firebaseConfig = {
 
 export const firebaseAuthConfig = {
   provider: AuthProviders.Password,
-  method: AuthMethods.Popup,
+  method: AuthMethods.Password,
   remember: 'default',
   scope: ['email']
 }
@@ -52,6 +52,6 @@ export const firebaseAuthConfig = {
     LoginPage,
     PlanDistribution
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, AuthService]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, AuthService, FIREBASE_PROVIDERS]
 })
 export class AppModule { }

@@ -25,16 +25,18 @@ import {GeneralPage} from '../base/base.page';
 export class PlanInitialize extends GeneralPage {
 
   // Doughnut
-  public doughnutChartLabels: string[] = ['Incomes', 'Expenses', 'Keeps'];
-  public doughnutChartData: number[] = [350, 450, 100];
-  public doughnutChartType: string = 'doughnut';
+  public doughnutChartLabels: string[] = ['Expenses', 'Keeps'];
+  public doughnutChartData: number[] = [];
+  public doughnutChartType: string = 'pie';
+  public lineChartLegend:boolean = true;
 
-  amount: number;
   form: FormGroup;
   data: any;
 
-  months: any[] = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: ['rgba(255,0,0,.48)', 'rgba(49,153,0,.59)'],
+    }];
 
   lineChart: Observable<LineChart>;
   cOptions: Observable<ChartOptions>;
@@ -54,19 +56,17 @@ export class PlanInitialize extends GeneralPage {
     this.form.valueChanges
       .debounceTime(500)
       .map(next => {
-        this.doughnutChartData = [this.incomes, this.expenses, this.incomes - this.expenses];
+        this.doughnutChartData = [this.expenses, this.incomes - this.expenses];
       }).subscribe();
   }
 
   incomes: number = 0;
   expenses: number = 0;
-  initial: number = 0;
 
   buildControls(): FormGroup {
     return new FormGroup({
       incomes: new FormControl(0, Validators.required),
-      expenses: new FormControl(0, Validators.required),
-      initial: new FormControl(0)
+      expenses: new FormControl(0, Validators.required)
     });
   }
 
